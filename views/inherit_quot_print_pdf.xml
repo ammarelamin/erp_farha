@@ -1,0 +1,44 @@
+<odoo>
+    <data>
+        <!-- Inherit quotation report (from module sale) -->
+        <template id="report_quotation_inherit" inherit_id="sale.report_saleorder_document">
+            <xpath expr="//div[@t-if='doc.user_id.name']" position="before">
+                <div t-if="doc.commitment_date" class="col-auto mw-100 mb-2">
+                    <strong>Delivery Date:</strong>
+                    <p class="m-0" t-field="doc.commitment_date"/>
+                </div>
+            </xpath>
+
+            <xpath expr="//t[@t-set='address']" position="replace">
+                <div class="col-10 text-right ">
+                    <strong>Customer : </strong><span t-field="doc.partner_id" /><br/>
+                    <strong t-if="doc.partner_id.phone">Tel : </strong><span t-field="doc.partner_id.phone" /><br/>
+                    <strong t-if="doc.partner_id.street" >Address : </strong> <span t-if="doc.partner_id.street"
+                            t-field="doc.partner_id.street" />
+                        <span t-if="doc.partner_id.street2"
+                            t-field="doc.partner_id.street2" />
+                </div></xpath>
+
+            <xpath expr="//div[@t-if='doc.user_id.name']" position="replace">
+            </xpath>
+
+            <xpath expr="//div[@id='informations']" position="after">
+                <div class="row mt32 mb32" id="Details">
+                    <div t-if="doc.user_id.name" class="col-auto mw-100 mb-2">
+                        <strong>Sales Engineer:</strong>
+                        <p class="m-0" t-field="doc.user_id.name"/>
+                    </div>
+                    <div t-if="doc.user_id.phone" class="col-auto mw-100 mb-2">
+                        <strong>Phone:</strong>
+                        <p class="m-0" t-field="doc.user_id.partner_id.phone"/>
+                    </div>
+
+                    <div t-if="doc.user_id.email" class="col-auto mw-100 mb-2">
+                        <strong>E-mail:</strong>
+                        <p class="m-0" t-field="doc.user_id.partner_id.email"/>
+                    </div>
+                </div>
+            </xpath>
+        </template>
+    </data>
+</odoo>
