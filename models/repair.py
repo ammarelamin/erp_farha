@@ -14,4 +14,6 @@ class repirOrder(models.Model):
     air_condition = fields.Char(string='Air Condition')
     electricity = fields.Char(string='Electricity')
     cash = fields.Char(string='Cash')
+    picking_id = fields.Many2one(comodel_name='stock.picking', string='Stock Move')
+    
     

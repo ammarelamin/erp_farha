@@ -12,6 +12,7 @@
                     <field name="earth"/>
                     <field name="electricity"/>
                     <field name="cash"/>
+                    <field name="picking_id"/>
                 </xpath>
                 <xpath expr="//field[@name='partner_id']" position="after">
                     <field name="repair_status"/>
